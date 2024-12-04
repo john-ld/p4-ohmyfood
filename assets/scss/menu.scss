@@ -1,0 +1,225 @@
+html,
+body {
+  overflow-x: hidden;
+}
+// Structure principale de la page menu
+.menu {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 40px;
+  background: #ffffff;
+  border-top-right-radius: 40px;
+  margin-top: -50px;
+}
+
+.restaurant-menu {
+  display: flex;
+  flex-direction: column;
+  background: #f6f6f6;
+  border-radius: 30px 30px 0 0;
+  padding: 30px 0;
+  align-items: center;
+}
+
+.restaurant-menu__title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px 40px 0 0;
+  position: relative;
+  margin-top: -15px;
+  width: 425px;
+  height: 80px;
+
+  h1 {
+    font-family: "Shrikhand", serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: #101010;
+  }
+}
+
+.like-btn {
+  margin-left: 20px;
+  display: flex;
+  cursor: pointer;
+
+  i {
+    font-size: 24px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+}
+
+.title {
+  margin-right: 10px;
+}
+
+.fa-regular {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-variant: normal;
+}
+
+.restaurant-picture__picture {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+// Animation progressive des catégories
+.restaurant-menu .category {
+  display: flex;
+  flex-direction: column;
+  width: 94%; // Largeur relative pour s'adapter aux tailles d'écran
+  margin: 30px auto 0 auto; // Centrage des catégories
+  opacity: 0; // Initialement masqué pour l'effet d'animation
+
+  // Apparition des catégories avec un délai
+  &.cat-1 {
+    animation: display-menu 2s ease-in 700ms; // 700ms avant le début de l'animation
+    animation-fill-mode: forwards; // Persiste après l'animation
+  }
+
+  &.cat-2 {
+    animation: display-menu 2s ease-in 1400ms; // Apparition différée pour un effet séquentiel
+    animation-fill-mode: forwards;
+  }
+
+  &.cat-3 {
+    animation: display-menu 2s ease-in 2100ms;
+    animation-fill-mode: forwards;
+  }
+}
+
+.category__title {
+  width: 40px;
+  font-size: 1rem;
+  border-bottom: 3px solid #99e2d0;
+  font-weight: 300;
+}
+// Effet au survol d'un élément de menu
+.category__item {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  width: 100%;
+  min-height: 69px;
+  border-radius: 15px;
+  margin-top: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  // Apparition progressive de la checkbox au survol
+  &:hover > .checkbox {
+    width: 69px; // Extension visible de la checkbox
+  }
+}
+
+.content {
+  display: flex;
+  padding: 12px 14px;
+  width: 100%;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
+
+  .name {
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 69px);
+    font-size: 1.125rem;
+  }
+
+  p {
+    min-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 69px);
+    font-size: 0.938rem;
+  }
+
+  .price {
+    text-align: right;
+    margin-top: -18px;
+    font-size: 0.938rem;
+  }
+}
+
+h4 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #000000;
+}
+// Styles des checkbox
+.checkbox {
+  display: flex;
+  width: 0px; // Cachée par défaut
+  background: #99e2d0;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  transition: width 200ms ease-in-out; // Animation fluide pour la largeur
+}
+
+.order-link {
+  margin-top: 20px;
+}
+
+.button-container {
+  justify-content: center;
+}
+
+.btn--main2 {
+  background: linear-gradient(
+    0deg,
+    rgb(147, 86, 220) 0%,
+    rgb(255, 121, 218) 97%
+  );
+  border-radius: 30px;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 186px;
+  max-width: fit-content;
+
+  &:hover {
+    opacity: 0.85;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  }
+}
+// Définition de l'animation de chaque catégorie
+@keyframes display-menu {
+  from {
+    opacity: 0; // Invisible au départ
+  }
+
+  to {
+    opacity: 1; // Devient visible progressivement
+  }
+}
+
+/* Media Queries */
+@media (min-width: 1024px) {
+  .restaurant-picture__picture {
+    height: 383px;
+  }
+
+  .menu .restaurant-menu {
+    width: 1050px;
+    margin: 0 auto;
+  }
+
+  .restaurant-menu .category {
+    width: 65%;
+  }
+}
